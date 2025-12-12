@@ -44,21 +44,36 @@ export function Preloader() {
       if (window.gsap) {
         initAnimation()
       } else {
-        const checkGsap = setInterval(() => {
-          if (window.gsap) {
+        let checkGsap: NodeJS.Timeout | null = null
+        let timeoutId: NodeJS.Timeout | null = null
+
+        checkGsap = setInterval(() => {
+          if (window.gsap && checkGsap) {
             clearInterval(checkGsap)
+            checkGsap = null
+            if (timeoutId) {
+              clearTimeout(timeoutId)
+              timeoutId = null
+            }
             initAnimation()
           }
         }, 100)
 
-        const timeout = setTimeout(() => {
-          clearInterval(checkGsap)
+        timeoutId = setTimeout(() => {
+          if (checkGsap) {
+            clearInterval(checkGsap)
+            checkGsap = null
+          }
           setIsLoading(false)
         }, 3000)
 
         return () => {
-          clearInterval(checkGsap)
-          clearTimeout(timeout)
+          if (checkGsap) {
+            clearInterval(checkGsap)
+          }
+          if (timeoutId) {
+            clearTimeout(timeoutId)
+          }
         }
       }
     }
