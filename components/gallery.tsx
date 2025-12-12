@@ -72,39 +72,35 @@ export function Gallery() {
         </div>
 
         <div className="max-w-6xl mx-auto relative">
-          {/* Main Gallery */}
-          <div className="relative aspect-[16/10] md:aspect-[16/9] overflow-hidden rounded-3xl border-2 border-[#DC143C]/30">
-            <div className="grid md:grid-cols-2 h-full">
-              {/* Before */}
-              <div className="relative group overflow-hidden">
-                <img
-                  src={galleryItems[currentIndex].before || "/placeholder.svg"}
-                  alt="Before"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute top-4 left-4 bg-black/80 text-white px-4 py-2 rounded-lg font-bold text-lg">
-                  BEFORE
+          {/* Main Carousel */}
+          <div className="relative aspect-[16/10] md:aspect-[16/9] overflow-hidden rounded-3xl border-2 border-[#DC143C]/30 bg-[#1a1a1a]">
+            {/* Carousel Items - Linear infinite animation */}
+            <div className="relative w-full h-full">
+              {galleryItems.map((item, idx) => (
+                <div
+                  key={idx}
+                  className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                    idx === currentIndex ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
                 </div>
-              </div>
-
-              {/* After */}
-              <div className="relative group overflow-hidden">
-                <img
-                  src={galleryItems[currentIndex].after || "/placeholder.svg"}
-                  alt="After"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute top-4 right-4 bg-[#DC143C] text-white px-4 py-2 rounded-lg font-bold text-lg">
-                  AFTER
-                </div>
-              </div>
+              ))}
             </div>
 
-            {/* Title Overlay */}
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-8">
-              <h3 className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-white tracking-wide">
+            {/* Title and Navigation Info */}
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6 md:p-10">
+              <h3 className="font-[family-name:var(--font-bebas)] text-2xl md:text-4xl text-white tracking-wide mb-2">
                 {galleryItems[currentIndex].title}
               </h3>
+              <p className="text-white/70 text-sm md:text-base">
+                {currentIndex + 1} of {galleryItems.length}
+              </p>
             </div>
           </div>
 
