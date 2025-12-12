@@ -6,11 +6,19 @@ export function Preloader() {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
+    // Set a maximum timeout to hide preloader after 4 seconds
+    const maxTimeout = setTimeout(() => {
+      setIsLoading(false)
+    }, 4000)
+
     // Initialize GSAP animation after it loads
     const initAnimation = () => {
       if (typeof window !== "undefined" && window.gsap) {
         const tl = window.gsap.timeline({
-          onComplete: () => setIsLoading(false),
+          onComplete: () => {
+            clearTimeout(maxTimeout)
+            setIsLoading(false)
+          },
         })
 
         tl.from(".paint-can", {
@@ -35,47 +43,33 @@ export function Preloader() {
           )
       } else {
         // Fallback if GSAP doesn't load
-        setTimeout(() => setIsLoading(false), 2000)
+        clearTimeout(maxTimeout)
+        setTimeout(() => setIsLoading(false), 500)
       }
     }
 
-    // Wait for GSAP to load
+    // Check if GSAP is loaded
     if (typeof window !== "undefined") {
       if (window.gsap) {
         initAnimation()
       } else {
-        let checkGsap: NodeJS.Timeout | null = null
-        let timeoutId: NodeJS.Timeout | null = null
-
-        checkGsap = setInterval(() => {
-          if (window.gsap && checkGsap) {
-            clearInterval(checkGsap)
-            checkGsap = null
-            if (timeoutId) {
-              clearTimeout(timeoutId)
-              timeoutId = null
-            }
+        // Wait for GSAP to load with polling
+        const checkInterval = setInterval(() => {
+          if (window.gsap) {
+            clearInterval(checkInterval)
             initAnimation()
           }
         }, 100)
 
-        timeoutId = setTimeout(() => {
-          if (checkGsap) {
-            clearInterval(checkGsap)
-            checkGsap = null
-          }
-          setIsLoading(false)
-        }, 3000)
-
         return () => {
-          if (checkGsap) {
-            clearInterval(checkGsap)
-          }
-          if (timeoutId) {
-            clearTimeout(timeoutId)
-          }
+          clearInterval(checkInterval)
+          clearTimeout(maxTimeout)
         }
       }
+    }
+
+    return () => {
+      clearTimeout(maxTimeout)
     }
   }, [])
 
