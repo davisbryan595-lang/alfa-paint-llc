@@ -17,11 +17,13 @@ export function Gallery() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
   const sectionRef = useRef<HTMLDivElement>(null)
+  const [isTransitioning, setIsTransitioning] = useState(false)
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.gsap && window.ScrollTrigger) {
       window.gsap.registerPlugin(window.ScrollTrigger)
 
+      // Gallery title animation
       window.gsap.from(".gallery-title", {
         scrollTrigger: {
           trigger: ".gallery-section",
@@ -31,6 +33,31 @@ export function Gallery() {
         y: 50,
         duration: 1,
         ease: "power3.out",
+      })
+
+      // Gallery carousel container animation
+      window.gsap.from(".gallery-carousel-main", {
+        scrollTrigger: {
+          trigger: ".gallery-section",
+          start: "top 70%",
+        },
+        opacity: 0,
+        scale: 0.95,
+        duration: 1.2,
+        ease: "power3.out",
+      })
+
+      // Navigation buttons animation
+      window.gsap.from(".gallery-nav-controls", {
+        scrollTrigger: {
+          trigger: ".gallery-section",
+          start: "top 60%",
+        },
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        delay: 0.3,
+        ease: "power2.out",
       })
     }
   }, [])
