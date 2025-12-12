@@ -35,6 +35,19 @@ export function WhyChoose() {
     if (typeof window !== "undefined" && window.gsap && window.ScrollTrigger) {
       window.gsap.registerPlugin(window.ScrollTrigger)
 
+      // Section title animation
+      window.gsap.from(".why-section-title", {
+        scrollTrigger: {
+          trigger: ".why-section",
+          start: "top 75%",
+        },
+        opacity: 0,
+        y: 40,
+        duration: 0.8,
+        ease: "power3.out",
+      })
+
+      // Feature cards entrance animation
       window.gsap.from(".feature-card", {
         scrollTrigger: {
           trigger: ".why-section",
@@ -42,9 +55,57 @@ export function WhyChoose() {
         },
         y: 80,
         opacity: 0,
-        duration: 0.8,
-        stagger: 0.2,
+        duration: 1,
+        stagger: 0.15,
         ease: "power3.out",
+      })
+
+      // Add interactive hover animations to feature cards
+      const featureCards = document.querySelectorAll(".feature-card")
+      featureCards.forEach((card) => {
+        card.addEventListener("mouseenter", () => {
+          window.gsap.to(card, {
+            y: -10,
+            boxShadow: "0 30px 60px rgba(220, 20, 60, 0.3)",
+            duration: 0.3,
+            ease: "power2.out",
+          })
+
+          window.gsap.to(card.querySelector(".feature-card-image"), {
+            scale: 1.1,
+            duration: 0.5,
+            ease: "power2.out",
+          })
+
+          window.gsap.to(card.querySelector(".feature-card-icon"), {
+            scale: 1.2,
+            rotate: 5,
+            duration: 0.3,
+            ease: "back.out(1.7)",
+          })
+        })
+
+        card.addEventListener("mouseleave", () => {
+          window.gsap.to(card, {
+            y: 0,
+            boxShadow: "0 10px 30px rgba(0, 0, 0, 0.3)",
+            duration: 0.3,
+            ease: "power2.out",
+          })
+
+          window.gsap.to(card.querySelector(".feature-card-image"), {
+            scale: 1,
+            duration: 0.5,
+            ease: "power2.out",
+          })
+
+          window.gsap.to(card.querySelector(".feature-card-icon"), {
+            scale: 1,
+            rotate: 0,
+            duration: 0.3,
+            ease: "power2.out",
+          })
+        })
       })
     }
   }, [])
