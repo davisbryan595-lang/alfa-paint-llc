@@ -17,8 +17,11 @@ export function Navbar() {
   }, [])
 
   const navLinks = [
-    { label: "Why Choose", href: "#why" },
+    { label: "About", href: "#about" },
+    { label: "Services", href: "#services" },
+    { label: "Pricing", href: "#pricing" },
     { label: "Gallery", href: "#gallery" },
+    { label: "Why Choose", href: "#why" },
     { label: "Contact", href: "#contact" },
   ]
 
