@@ -8,16 +8,61 @@ export function Services() {
     if (typeof window !== "undefined" && window.gsap && window.ScrollTrigger) {
       window.gsap.registerPlugin(window.ScrollTrigger)
 
+      // Section title animation
+      window.gsap.from(".services-title", {
+        scrollTrigger: {
+          trigger: ".services-section",
+          start: "top 75%",
+        },
+        opacity: 0,
+        y: 40,
+        duration: 0.8,
+        ease: "power3.out",
+      })
+
+      // Service cards animation with stagger
       window.gsap.from(".service-card", {
         scrollTrigger: {
           trigger: ".services-section",
-          start: "top 80%",
+          start: "top 70%",
         },
-        y: 100,
+        y: 80,
         opacity: 0,
         duration: 1,
-        stagger: 0.3,
+        stagger: 0.25,
         ease: "power3.out",
+      })
+
+      // Add hover animations to service cards
+      const serviceCards = document.querySelectorAll(".service-card")
+      serviceCards.forEach((card) => {
+        card.addEventListener("mouseenter", () => {
+          window.gsap.to(card.querySelector(".service-card-image"), {
+            scale: 1.15,
+            duration: 0.6,
+            ease: "power2.out",
+          })
+
+          window.gsap.to(card.querySelector(".service-card-overlay"), {
+            opacity: 1,
+            duration: 0.4,
+            ease: "power2.out",
+          })
+        })
+
+        card.addEventListener("mouseleave", () => {
+          window.gsap.to(card.querySelector(".service-card-image"), {
+            scale: 1,
+            duration: 0.6,
+            ease: "power2.out",
+          })
+
+          window.gsap.to(card.querySelector(".service-card-overlay"), {
+            opacity: 0,
+            duration: 0.4,
+            ease: "power2.out",
+          })
+        })
       })
     }
   }, [])
