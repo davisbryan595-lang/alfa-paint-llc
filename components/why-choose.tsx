@@ -120,9 +120,12 @@ export function WhyChoose() {
           <h2 className="why-section-title font-[family-name:var(--font-bebas)] text-6xl md:text-7xl text-white mb-4 tracking-wide">
             Why Choose ALFA
           </h2>
-          <div className="flex justify-center">
+          <div className="flex justify-center mb-4">
             <div className="w-24 h-1 bg-[#DC143C]"></div>
           </div>
+          <p className="text-white/70 text-lg max-w-3xl mx-auto">
+            We combine professional expertise with customer care to deliver exceptional painting results every time
+          </p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
