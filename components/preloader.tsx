@@ -4,8 +4,11 @@ import { useEffect, useState } from "react"
 
 export function Preloader() {
   const [isLoading, setIsLoading] = useState(true)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
+
     // Initialize GSAP animation after it loads
     const initAnimation = () => {
       if (typeof window !== "undefined" && window.gsap) {
@@ -40,24 +43,26 @@ export function Preloader() {
     }
 
     // Wait for GSAP to load
-    if (window.gsap) {
-      initAnimation()
-    } else {
-      const checkGsap = setInterval(() => {
-        if (window.gsap) {
-          clearInterval(checkGsap)
-          initAnimation()
-        }
-      }, 100)
+    if (typeof window !== "undefined") {
+      if (window.gsap) {
+        initAnimation()
+      } else {
+        const checkGsap = setInterval(() => {
+          if (window.gsap) {
+            clearInterval(checkGsap)
+            initAnimation()
+          }
+        }, 100)
 
-      setTimeout(() => {
-        clearInterval(checkGsap)
-        setIsLoading(false)
-      }, 3000)
+        setTimeout(() => {
+          clearInterval(checkGsap)
+          setIsLoading(false)
+        }, 3000)
+      }
     }
   }, [])
 
-  if (!isLoading) return null
+  if (!mounted || !isLoading) return null
 
   return (
     <div className="fixed inset-0 z-[9999] bg-[#0A0A0A] flex items-center justify-center">
