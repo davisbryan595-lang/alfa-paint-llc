@@ -76,9 +76,9 @@ export function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center flex-shrink-0">
-            <Image src="https://cdn.builder.io/api/v1/image/assets%2F52da5d68f89948b9bbd69807a376ed7b%2F0418b1b4af2c4951a3eb3d0036b09ac5?format=webp&width=800" alt="ALFA PAINT LLC" width={80} height={80} className="w-16 h-16 md:w-20 md:h-20 object-contain" />
-          </div>
+          <Link href="/" className="flex items-center flex-shrink-0 hover:opacity-80 transition-opacity duration-300">
+            <Image src="https://cdn.builder.io/api/v1/image/assets%2F52da5d68f89948b9bbd69807a376ed7b%2F0418b1b4af2c4951a3eb3d0036b09ac5?format=webp&width=800" alt="ALFA PAINT LLC" width={160} height={160} className="navbar-logo w-32 h-32 md:w-40 md:h-40 object-contain cursor-pointer" />
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
