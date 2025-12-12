@@ -105,9 +105,15 @@ export function Services() {
                   Interior Painting
                 </h3>
               </div>
-              <p className="text-white/70 text-base md:text-lg leading-relaxed">
-                Transform your indoor spaces with premium paints and expert craftsmanship. Perfect finishes for walls, ceilings, trim, and cabinetry.
+              <p className="text-white/70 text-base md:text-lg leading-relaxed mb-4">
+                Transform your indoor spaces with premium paints and expert craftsmanship. Perfect finishes for walls, ceilings, trim, and cabinetry. Our interior painting services include:
               </p>
+              <ul className="text-white/60 text-sm space-y-2">
+                <li>• Residential living rooms, bedrooms, and bathrooms</li>
+                <li>• Commercial office spaces and retail locations</li>
+                <li>• Cabinet and furniture refinishing</li>
+                <li>• Accent walls and creative finishes</li>
+              </ul>
             </div>
           </div>
 
@@ -133,9 +139,15 @@ export function Services() {
                   Exterior Painting
                 </h3>
               </div>
-              <p className="text-white/70 text-base md:text-lg leading-relaxed">
+              <p className="text-white/70 text-base md:text-lg leading-relaxed mb-4">
                 Protect and beautify your home's exterior with weather-resistant paints. Enhance curb appeal and property value with lasting results.
               </p>
+              <ul className="text-white/60 text-sm space-y-2">
+                <li>• House siding and exterior walls</li>
+                <li>• Deck and fence staining</li>
+                <li>• Garage doors and trim work</li>
+                <li>• Pressure washing and surface prep</li>
+              </ul>
             </div>
           </div>
         </div>
