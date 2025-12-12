@@ -104,19 +104,31 @@ export function Gallery() {
             </div>
           </div>
 
-          {/* Navigation Buttons */}
-          <div className="flex justify-center gap-4 mt-8">
-            <Button
-              onClick={prev}
-              size="lg"
-              variant="outline"
-              className="border-2 border-[#DC143C] bg-[#DC143C]/10 text-white hover:bg-[#DC143C] hover:text-white w-16 h-16 rounded-full p-0"
-            >
-              <ChevronLeft className="w-8 h-8" />
-            </Button>
+          {/* Navigation Controls */}
+          <div className="flex flex-col items-center gap-6 mt-10">
+            {/* Arrow Buttons */}
+            <div className="flex justify-center gap-4">
+              <Button
+                onClick={prev}
+                size="lg"
+                variant="outline"
+                className="border-2 border-[#DC143C] bg-[#DC143C]/10 text-white hover:bg-[#DC143C] hover:text-white transition-all duration-300 w-14 h-14 rounded-full p-0 hover:scale-110"
+              >
+                <ChevronLeft className="w-7 h-7" />
+              </Button>
+
+              <Button
+                onClick={next}
+                size="lg"
+                variant="outline"
+                className="border-2 border-[#DC143C] bg-[#DC143C]/10 text-white hover:bg-[#DC143C] hover:text-white transition-all duration-300 w-14 h-14 rounded-full p-0 hover:scale-110"
+              >
+                <ChevronRight className="w-7 h-7" />
+              </Button>
+            </div>
 
             {/* Dots Indicator */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 flex-wrap justify-center">
               {galleryItems.map((_, idx) => (
                 <button
                   key={idx}
@@ -124,21 +136,18 @@ export function Gallery() {
                     setCurrentIndex(idx)
                     setIsAutoPlaying(false)
                   }}
-                  className={`h-3 rounded-full transition-all duration-300 ${
-                    idx === currentIndex ? "w-12 bg-[#DC143C]" : "w-3 bg-white/30 hover:bg-white/50"
+                  className={`rounded-full transition-all duration-300 hover:bg-white/70 ${
+                    idx === currentIndex ? "w-10 h-3 bg-[#DC143C]" : "w-3 h-3 bg-white/30"
                   }`}
+                  aria-label={`Go to slide ${idx + 1}`}
                 />
               ))}
             </div>
 
-            <Button
-              onClick={next}
-              size="lg"
-              variant="outline"
-              className="border-2 border-[#DC143C] bg-[#DC143C]/10 text-white hover:bg-[#DC143C] hover:text-white w-16 h-16 rounded-full p-0"
-            >
-              <ChevronRight className="w-8 h-8" />
-            </Button>
+            {/* Auto-play indicator */}
+            <p className="text-white/60 text-sm">
+              {isAutoPlaying ? "Auto-playing..." : "Manual mode"}
+            </p>
           </div>
         </div>
       </div>
