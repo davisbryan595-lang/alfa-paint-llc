@@ -37,7 +37,7 @@ export function Footer() {
         </div>
 
         <div className="mt-8 pt-8 border-t border-[#DC143C]/20 text-center text-white/50 text-sm">
-          <p>&copy; {new Date().getFullYear()} ALFA PAINT LLC. All rights reserved. Licensed & Insured.</p>
+          <p>&copy; 2024 ALFA PAINT LLC. All rights reserved. Licensed & Insured.</p>
         </div>
       </div>
     </footer>

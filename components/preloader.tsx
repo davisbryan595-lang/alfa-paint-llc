@@ -40,27 +40,32 @@ export function Preloader() {
     }
 
     // Wait for GSAP to load
-    if (window.gsap) {
-      initAnimation()
-    } else {
-      const checkGsap = setInterval(() => {
-        if (window.gsap) {
-          clearInterval(checkGsap)
-          initAnimation()
-        }
-      }, 100)
+    if (typeof window !== "undefined") {
+      if (window.gsap) {
+        initAnimation()
+      } else {
+        const checkGsap = setInterval(() => {
+          if (window.gsap) {
+            clearInterval(checkGsap)
+            initAnimation()
+          }
+        }, 100)
 
-      setTimeout(() => {
-        clearInterval(checkGsap)
-        setIsLoading(false)
-      }, 3000)
+        setTimeout(() => {
+          clearInterval(checkGsap)
+          setIsLoading(false)
+        }, 3000)
+      }
     }
   }, [])
 
-  if (!isLoading) return null
-
   return (
-    <div className="fixed inset-0 z-[9999] bg-[#0A0A0A] flex items-center justify-center">
+    <div
+      className={`fixed inset-0 z-[9999] bg-[#0A0A0A] flex items-center justify-center transition-opacity duration-500 ${
+        isLoading ? "opacity-100" : "opacity-0 pointer-events-none"
+      }`}
+      suppressHydrationWarning
+    >
       <div className="relative flex flex-col items-center">
         {/* Paint Can */}
         <div className="paint-can relative w-24 h-24 mb-4">

@@ -66,7 +66,10 @@ export function Contact() {
           <div className="flex justify-center mb-4">
             <div className="w-24 h-1 bg-[#DC143C]"></div>
           </div>
-          <p className="text-white/70 text-xl">Let's transform your space together</p>
+          <p className="text-white/70 text-xl mb-3">Let's transform your space together</p>
+          <p className="text-white/60 text-lg max-w-2xl mx-auto">
+            Ready to start your painting project? Fill out the form below or call us directly for immediate assistance.
+          </p>
         </div>
 
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12">

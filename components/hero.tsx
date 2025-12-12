@@ -60,8 +60,18 @@ export function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0A0A0A]">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "url('https://images.pexels.com/photos/6970025/pexels-photo-6970025.jpeg')",
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/85"></div>
+      </div>
+
       {/* Animated background paint strokes */}
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-15">
         <div className="absolute top-20 left-10 w-64 h-64 bg-[#DC143C] rounded-full blur-[100px]"></div>
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#FF3333] rounded-full blur-[120px]"></div>
       </div>
@@ -86,8 +96,13 @@ export function Hero() {
           </p>
 
           {/* Locations */}
-          <p className="hero-locations text-lg md:text-xl text-white/70 mb-12 max-w-3xl mx-auto leading-relaxed">
+          <p className="hero-locations text-lg md:text-xl text-white/70 mb-4 max-w-3xl mx-auto leading-relaxed">
             Miami • Fort Lauderdale • Boca Raton • Hollywood • West Palm Beach
+          </p>
+
+          {/* Description */}
+          <p className="hero-locations text-base md:text-lg text-white/60 mb-12 max-w-2xl mx-auto leading-relaxed">
+            Professional interior and exterior painting services with 10+ years of excellence. Licensed, insured, and dedicated to transforming your space.
           </p>
 
           {/* CTA Buttons */}
