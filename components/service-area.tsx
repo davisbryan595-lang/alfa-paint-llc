@@ -57,7 +57,10 @@ export function ServiceArea() {
           <div className="flex justify-center mb-4">
             <div className="w-24 h-1 bg-[#DC143C]"></div>
           </div>
-          <p className="text-white/70 text-xl">Proudly serving South Florida</p>
+          <p className="text-white/70 text-xl mb-3">Proudly serving South Florida</p>
+          <p className="text-white/60 text-lg max-w-2xl mx-auto">
+            We provide comprehensive painting services across the greater Miami-Fort Lauderdale area and surrounding communities
+          </p>
         </div>
 
         <div className="max-w-4xl mx-auto">
