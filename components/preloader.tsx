@@ -6,11 +6,19 @@ export function Preloader() {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
+    // Set a maximum timeout to hide preloader after 4 seconds
+    const maxTimeout = setTimeout(() => {
+      setIsLoading(false)
+    }, 4000)
+
     // Initialize GSAP animation after it loads
     const initAnimation = () => {
       if (typeof window !== "undefined" && window.gsap) {
         const tl = window.gsap.timeline({
-          onComplete: () => setIsLoading(false),
+          onComplete: () => {
+            clearTimeout(maxTimeout)
+            setIsLoading(false)
+          },
         })
 
         tl.from(".paint-can", {
@@ -35,27 +43,33 @@ export function Preloader() {
           )
       } else {
         // Fallback if GSAP doesn't load
-        setTimeout(() => setIsLoading(false), 2000)
+        clearTimeout(maxTimeout)
+        setTimeout(() => setIsLoading(false), 500)
       }
     }
 
-    // Wait for GSAP to load
+    // Check if GSAP is loaded
     if (typeof window !== "undefined") {
       if (window.gsap) {
         initAnimation()
       } else {
-        const checkGsap = setInterval(() => {
+        // Wait for GSAP to load with polling
+        const checkInterval = setInterval(() => {
           if (window.gsap) {
-            clearInterval(checkGsap)
+            clearInterval(checkInterval)
             initAnimation()
           }
         }, 100)
 
-        setTimeout(() => {
-          clearInterval(checkGsap)
-          setIsLoading(false)
-        }, 3000)
+        return () => {
+          clearInterval(checkInterval)
+          clearTimeout(maxTimeout)
+        }
       }
+    }
+
+    return () => {
+      clearTimeout(maxTimeout)
     }
   }, [])
 

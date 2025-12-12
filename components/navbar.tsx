@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import { Phone, Menu, X } from "lucide-react"
+import Link from "next/link"
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -14,6 +15,39 @@ export function Navbar() {
     }
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  useEffect(() => {
+    // GSAP logo animation
+    if (typeof window !== "undefined" && window.gsap) {
+      // Entrance animation
+      window.gsap.from(".navbar-logo", {
+        opacity: 0,
+        scale: 0.8,
+        duration: 0.8,
+        ease: "back.out(1.7)",
+      })
+
+      // Hover animation
+      const logo = document.querySelector(".navbar-logo")
+      if (logo) {
+        logo.addEventListener("mouseenter", () => {
+          window.gsap.to(".navbar-logo", {
+            scale: 1.1,
+            duration: 0.4,
+            ease: "back.out(1.7)",
+          })
+        })
+
+        logo.addEventListener("mouseleave", () => {
+          window.gsap.to(".navbar-logo", {
+            scale: 1,
+            duration: 0.4,
+            ease: "back.out(1.7)",
+          })
+        })
+      }
+    }
   }, [])
 
   const navLinks = [
@@ -42,10 +76,9 @@ export function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center gap-3 flex-shrink-0">
-            <Image src="/logo.png" alt="ALFA PAINT LLC" width={50} height={50} className="w-10 h-10 md:w-12 md:h-12 object-contain" />
-            <span className="text-white font-[family-name:var(--font-bebas)] text-lg md:text-2xl tracking-wide">ALFA PAINT LLC</span>
-          </div>
+          <Link href="/" className="flex items-center flex-shrink-0 hover:opacity-80 transition-opacity duration-300">
+            <Image src="https://cdn.builder.io/api/v1/image/assets%2F52da5d68f89948b9bbd69807a376ed7b%2F0418b1b4af2c4951a3eb3d0036b09ac5?format=webp&width=800" alt="ALFA PAINT LLC" width={160} height={160} className="navbar-logo w-32 h-32 md:w-40 md:h-40 object-contain cursor-pointer" />
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
