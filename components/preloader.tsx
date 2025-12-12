@@ -51,10 +51,15 @@ export function Preloader() {
           }
         }, 100)
 
-        setTimeout(() => {
+        const timeout = setTimeout(() => {
           clearInterval(checkGsap)
           setIsLoading(false)
         }, 3000)
+
+        return () => {
+          clearInterval(checkGsap)
+          clearTimeout(timeout)
+        }
       }
     }
   }, [])
