@@ -96,8 +96,13 @@ export function Hero() {
           </p>
 
           {/* Locations */}
-          <p className="hero-locations text-lg md:text-xl text-white/70 mb-12 max-w-3xl mx-auto leading-relaxed">
+          <p className="hero-locations text-lg md:text-xl text-white/70 mb-4 max-w-3xl mx-auto leading-relaxed">
             Miami • Fort Lauderdale • Boca Raton • Hollywood • West Palm Beach
+          </p>
+
+          {/* Description */}
+          <p className="hero-locations text-base md:text-lg text-white/60 mb-12 max-w-2xl mx-auto leading-relaxed">
+            Professional interior and exterior painting services with 10+ years of excellence. Licensed, insured, and dedicated to transforming your space.
           </p>
 
           {/* CTA Buttons */}
