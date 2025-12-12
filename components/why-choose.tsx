@@ -8,25 +8,25 @@ const features = [
     icon: Shield,
     title: "Licensed & Insured",
     description: "Fully certified and insured for your peace of mind and protection",
-    image: "/professional-painting-crew-with-safety-equipment.jpg",
+    image: "https://images.pexels.com/photos/4792500/pexels-photo-4792500.jpeg",
   },
   {
     icon: Clock,
     title: "10+ Years Experience",
     description: "Over a decade of delivering exceptional painting services across South Florida",
-    image: "/experienced-painting-professional-at-work.jpg",
+    image: "https://images.pexels.com/photos/11953905/pexels-photo-11953905.jpeg",
   },
   {
     icon: Sparkles,
     title: "Premium Paints",
     description: "Only the highest quality paints and materials for lasting, beautiful results",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "https://images.pexels.com/photos/6890399/pexels-photo-6890399.jpeg",
   },
   {
     icon: CheckCircle,
     title: "Clean Work Guaranteed",
     description: "Meticulous preparation, execution, and cleanup on every single project",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "https://images.pexels.com/photos/7481270/pexels-photo-7481270.jpeg",
   },
 ]
 
