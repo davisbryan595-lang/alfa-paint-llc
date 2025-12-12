@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import { Phone, Menu, X } from "lucide-react"
+import Link from "next/link"
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -14,6 +15,39 @@ export function Navbar() {
     }
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  useEffect(() => {
+    // GSAP logo animation
+    if (typeof window !== "undefined" && window.gsap) {
+      // Entrance animation
+      window.gsap.from(".navbar-logo", {
+        opacity: 0,
+        scale: 0.8,
+        duration: 0.8,
+        ease: "back.out(1.7)",
+      })
+
+      // Hover animation
+      const logo = document.querySelector(".navbar-logo")
+      if (logo) {
+        logo.addEventListener("mouseenter", () => {
+          window.gsap.to(".navbar-logo", {
+            scale: 1.1,
+            duration: 0.4,
+            ease: "back.out(1.7)",
+          })
+        })
+
+        logo.addEventListener("mouseleave", () => {
+          window.gsap.to(".navbar-logo", {
+            scale: 1,
+            duration: 0.4,
+            ease: "back.out(1.7)",
+          })
+        })
+      }
+    }
   }, [])
 
   const navLinks = [
