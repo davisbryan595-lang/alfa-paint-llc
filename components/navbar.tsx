@@ -42,9 +42,8 @@ export function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center gap-3 flex-shrink-0">
-            <Image src="/logo.png" alt="ALFA PAINT LLC" width={50} height={50} className="w-10 h-10 md:w-12 md:h-12 object-contain" />
-            <span className="text-white font-[family-name:var(--font-bebas)] text-lg md:text-2xl tracking-wide">ALFA PAINT LLC</span>
+          <div className="flex items-center flex-shrink-0">
+            <Image src="https://cdn.builder.io/api/v1/image/assets%2F52da5d68f89948b9bbd69807a376ed7b%2F0418b1b4af2c4951a3eb3d0036b09ac5?format=webp&width=800" alt="ALFA PAINT LLC" width={80} height={80} className="w-16 h-16 md:w-20 md:h-20 object-contain" />
           </div>
 
           {/* Desktop Navigation */}
