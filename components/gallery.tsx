@@ -63,14 +63,30 @@ export function Gallery() {
   }, [])
 
   useEffect(() => {
-    if (!isAutoPlaying) return
+    if (!isAutoPlaying || isTransitioning) return
 
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % galleryItems.length)
+      if (typeof window !== "undefined" && window.gsap) {
+        window.gsap.to(".gallery-carousel-image", {
+          opacity: 0,
+          duration: 0.5,
+          ease: "power2.inOut",
+          onComplete: () => {
+            setCurrentIndex((prev) => (prev + 1) % galleryItems.length)
+            window.gsap.to(".gallery-carousel-image", {
+              opacity: 1,
+              duration: 0.5,
+              ease: "power2.inOut",
+            })
+          },
+        })
+      } else {
+        setCurrentIndex((prev) => (prev + 1) % galleryItems.length)
+      }
     }, 4000)
 
     return () => clearInterval(interval)
-  }, [isAutoPlaying])
+  }, [isAutoPlaying, isTransitioning])
 
   const next = () => {
     if (isTransitioning) return
