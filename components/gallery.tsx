@@ -5,12 +5,12 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const galleryItems = [
-  { before: "/old-worn-interior-room-before-painting.jpg", after: "/freshly-painted-modern-interior-room-after.jpg", title: "Living Room Transformation" },
-  { before: "/dated-bedroom-with-old-paint-before.jpg", after: "/modern-bedroom-with-fresh-paint-after.jpg", title: "Master Bedroom Makeover" },
-  { before: "/kitchen-with-old-paint-before-renovation.jpg", after: "/modern-kitchen-with-fresh-paint-after.jpg", title: "Kitchen Refresh" },
-  { before: "/old-house-exterior-before-painting.jpg", after: "/beautiful-painted-house-exterior-after.jpg", title: "Exterior Revival" },
-  { before: "/office-space-before-painting-renovation.jpg", after: "/modern-office-with-fresh-paint-after.jpg", title: "Office Space Update" },
-  { before: "/bathroom-before-painting.jpg", after: "/modern-bathroom-after-painting.jpg", title: "Bathroom Transformation" },
+  { image: "https://images.pexels.com/photos/7217966/pexels-photo-7217966.jpeg", title: "Living Room Wall Preparation" },
+  { image: "https://images.pexels.com/photos/6970025/pexels-photo-6970025.jpeg", title: "Master Bedroom Transformation" },
+  { image: "https://images.pexels.com/photos/6890399/pexels-photo-6890399.jpeg", title: "Modern Kitchen Refresh" },
+  { image: "https://images.pexels.com/photos/12908606/pexels-photo-12908606.jpeg", title: "Luxury Bathroom Update" },
+  { image: "https://images.pexels.com/photos/380769/pexels-photo-380769.jpeg", title: "Professional Office Space" },
+  { image: "https://images.pexels.com/photos/4792500/pexels-photo-4792500.jpeg", title: "Expert Painting Technique" },
 ]
 
 export function Gallery() {
