@@ -65,7 +65,7 @@ export function Preloader() {
   if (!mounted || !isLoading) return null
 
   return (
-    <div className="fixed inset-0 z-[9999] bg-[#0A0A0A] flex items-center justify-center">
+    <div className="fixed inset-0 z-[9999] bg-[#0A0A0A] flex items-center justify-center" suppressHydrationWarning>
       <div className="relative flex flex-col items-center">
         {/* Paint Can */}
         <div className="paint-can relative w-24 h-24 mb-4">
