@@ -150,12 +150,15 @@ export function Gallery() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="gallery-title font-[family-name:var(--font-bebas)] text-6xl md:text-7xl text-white mb-4 tracking-wide">
-            Before & After
+            Gallery
           </h2>
           <div className="flex justify-center mb-4">
             <div className="w-24 h-1 bg-[#DC143C]"></div>
           </div>
-          <p className="text-white/70 text-xl">See the ALFA difference</p>
+          <p className="text-white/70 text-xl mb-3">See the ALFA difference</p>
+          <p className="text-white/60 text-lg max-w-2xl mx-auto">
+            Browse through our portfolio of completed projects showcasing professional craftsmanship and attention to detail
+          </p>
         </div>
 
         <div className="max-w-6xl mx-auto relative">
