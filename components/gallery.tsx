@@ -73,13 +73,57 @@ export function Gallery() {
   }, [isAutoPlaying])
 
   const next = () => {
+    if (isTransitioning) return
     setIsAutoPlaying(false)
-    setCurrentIndex((prev) => (prev + 1) % galleryItems.length)
+    setIsTransitioning(true)
+
+    if (typeof window !== "undefined" && window.gsap) {
+      window.gsap.to(".gallery-carousel-image", {
+        opacity: 0,
+        duration: 0.4,
+        ease: "power2.inOut",
+      })
+
+      setTimeout(() => {
+        setCurrentIndex((prev) => (prev + 1) % galleryItems.length)
+        window.gsap.to(".gallery-carousel-image", {
+          opacity: 1,
+          duration: 0.4,
+          ease: "power2.inOut",
+        })
+        setIsTransitioning(false)
+      }, 200)
+    } else {
+      setCurrentIndex((prev) => (prev + 1) % galleryItems.length)
+      setIsTransitioning(false)
+    }
   }
 
   const prev = () => {
+    if (isTransitioning) return
     setIsAutoPlaying(false)
-    setCurrentIndex((prev) => (prev - 1 + galleryItems.length) % galleryItems.length)
+    setIsTransitioning(true)
+
+    if (typeof window !== "undefined" && window.gsap) {
+      window.gsap.to(".gallery-carousel-image", {
+        opacity: 0,
+        duration: 0.4,
+        ease: "power2.inOut",
+      })
+
+      setTimeout(() => {
+        setCurrentIndex((prev) => (prev - 1 + galleryItems.length) % galleryItems.length)
+        window.gsap.to(".gallery-carousel-image", {
+          opacity: 1,
+          duration: 0.4,
+          ease: "power2.inOut",
+        })
+        setIsTransitioning(false)
+      }, 200)
+    } else {
+      setCurrentIndex((prev) => (prev - 1 + galleryItems.length) % galleryItems.length)
+      setIsTransitioning(false)
+    }
   }
 
   return (
