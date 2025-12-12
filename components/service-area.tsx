@@ -61,30 +61,20 @@ export function ServiceArea() {
         </div>
 
         <div className="max-w-4xl mx-auto">
-          {/* Map Visual */}
-          <div className="map-container relative mb-12 p-12 bg-gradient-to-br from-[#0f0f0f] to-[#1a1a1a] rounded-3xl border border-[#DC143C]/30">
-            <div className="absolute inset-0 overflow-hidden rounded-3xl opacity-10">
-              <svg className="w-full h-full" viewBox="0 0 400 300">
-                {/* Simplified Florida map outline */}
-                <path
-                  d="M 50 50 L 350 50 L 350 250 L 250 280 L 150 270 L 50 250 Z"
-                  fill="none"
-                  stroke="#DC143C"
-                  strokeWidth="2"
-                  className="animate-pulse"
-                />
-                {/* Coverage area highlight */}
-                <circle cx="200" cy="150" r="100" fill="#DC143C" opacity="0.2" />
-                <circle cx="200" cy="150" r="80" fill="#DC143C" opacity="0.3" />
-                <circle cx="200" cy="150" r="60" fill="#DC143C" opacity="0.4" />
-              </svg>
-            </div>
-
-            <div className="relative text-center">
-              <MapPin className="w-20 h-20 text-[#DC143C] mx-auto mb-4" />
-              <p className="text-white/90 text-2xl font-[family-name:var(--font-bebas)] tracking-wide">
-                South Florida Coverage
-              </p>
+          {/* Embedded Google Map */}
+          <div className="map-container relative mb-12 overflow-hidden rounded-3xl border-2 border-[#DC143C]/30 h-96 md:h-[500px]">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3547.6892340933444!2d-80.19384032345389!3d25.76168807662444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b3d3b3d3b3d3%3A0x0!2sMiami%2C%20Florida!5e0!3m2!1sen!2sus!4v1234567890"
+              width="100%"
+              height="100%"
+              style={{ border: 0, borderRadius: "24px" }}
+              allowFullScreen={true}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="w-full h-full"
+            />
+            <div className="absolute top-4 left-4 bg-black/70 backdrop-blur-sm px-4 py-2 rounded-lg pointer-events-none">
+              <p className="text-white font-semibold">South Florida Service Area</p>
             </div>
           </div>
 
