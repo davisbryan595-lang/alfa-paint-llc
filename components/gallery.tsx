@@ -144,14 +144,14 @@ export function Gallery() {
 
         <div className="max-w-6xl mx-auto relative">
           {/* Main Carousel */}
-          <div className="relative aspect-[16/10] md:aspect-[16/9] overflow-hidden rounded-3xl border-2 border-[#DC143C]/30 bg-[#1a1a1a]">
+          <div className="gallery-carousel-main relative aspect-[16/10] md:aspect-[16/9] overflow-hidden rounded-3xl border-2 border-[#DC143C]/30 bg-[#1a1a1a]">
             {/* Carousel Items - Linear infinite animation */}
-            <div className="relative w-full h-full">
+            <div className="gallery-carousel-image relative w-full h-full">
               {galleryItems.map((item, idx) => (
                 <div
                   key={idx}
-                  className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-                    idx === currentIndex ? "opacity-100" : "opacity-0"
+                  className={`absolute inset-0 ${
+                    idx === currentIndex ? "opacity-100" : "opacity-0 pointer-events-none"
                   }`}
                 >
                   <img
@@ -176,7 +176,7 @@ export function Gallery() {
           </div>
 
           {/* Navigation Controls */}
-          <div className="flex flex-col items-center gap-6 mt-10">
+          <div className="gallery-nav-controls flex flex-col items-center gap-6 mt-10">
             {/* Arrow Buttons */}
             <div className="flex justify-center gap-4">
               <Button
